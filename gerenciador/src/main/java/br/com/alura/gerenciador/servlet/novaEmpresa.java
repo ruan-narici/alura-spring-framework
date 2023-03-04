@@ -29,16 +29,36 @@ public class novaEmpresa extends HttpServlet {
 		PrintWriter escrevaAResposta = response.getWriter();
 		String empresa = request.getParameter("nomeDaEmpresa");
 		
+		
+		BancoDeDados bdd = new BancoDeDados();
+		Empresa empresaSave = new Empresa();
+		
+		//Definindo o nome e o id da empresa.
+		empresaSave.setNome(empresa);
+		
+		//Registrando no banco de dados.
+		bdd.addToList(empresaSave);
+		
+		//Exibindo o status do cadastro.
 		escrevaAResposta.println(String.format(
 						"""
 								<html>
 										<body>
-												<h1>A empresa %s foi cadastrada com sucesso!</h1>
-												<p>Horário: %s</p>
+											<h1>A empresa %s foi cadastrada com sucesso!</h1>
+											<p>Horário: %s</p>
+											<form action="/gerenciador/formNovaEmpresa.html" method="get">
+													<input type="submit" value="Novo cadastro"/>
+											</form>
+											<form action="/gerenciador/listaEmpresas" method="get">
+													<input type="submit" value="Lista de empresas"/>
+											</form>
 										</body>
+										
 								</html>
 						""",empresa, time
 				));
+		
+		//Notificando no console o status do cadastro.
 		System.out.println("Uma nova empresa foi cadastrada no servidor.");
 	}
 
