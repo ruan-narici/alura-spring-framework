@@ -10,7 +10,7 @@ public class Execute {
 	
 	public static void main(String[] args) throws Exception {
 		
-		String KeyApi = "k_9synf3in";
+		String KeyApi = "<KEY>";
 		
 		getJsonAndRefactor JsonWeb = new getJsonAndRefactor();
 		
