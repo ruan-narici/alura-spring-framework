@@ -16,7 +16,7 @@ import br.com.ruannarici.modelo.Filme;
  * Servlet implementation class top250
  */
 @WebServlet("/top250")
-public class top250 extends HttpServlet {
+public class top250_NAOUSAR extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
