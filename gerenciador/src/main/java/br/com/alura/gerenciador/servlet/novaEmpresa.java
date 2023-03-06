@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,23 +41,28 @@ public class novaEmpresa extends HttpServlet {
 		bdd.addToList(empresaSave);
 		
 		//Exibindo o status do cadastro.
-		escrevaAResposta.println(String.format(
-						"""
-								<html>
-										<body>
-											<h1>A empresa %s foi cadastrada com sucesso!</h1>
-											<p>Horário: %s</p>
-											<form action="/gerenciador/formNovaEmpresa.html" method="get">
-													<input type="submit" value="Novo cadastro"/>
-											</form>
-											<form action="/gerenciador/listaEmpresas" method="get">
-													<input type="submit" value="Lista de empresas"/>
-											</form>
-										</body>
-										
-								</html>
-						""",empresa, time
-				));
+//		escrevaAResposta.println(String.format(
+//						"""
+//								<html>
+//										<body>
+//											<h1>A empresa %s foi cadastrada com sucesso!</h1>
+//											<p>Horário: %s</p>
+//											<form action="/gerenciador/formNovaEmpresa.html" method="get">
+//													<input type="submit" value="Novo cadastro"/>
+//											</form>
+//											<form action="/gerenciador/listaEmpresas" method="get">
+//													<input type="submit" value="Lista de empresas"/>
+//											</form>
+//										</body>
+//										
+//								</html>
+//						""",empresa, time
+//				));
+		
+		//Enviando atributos para o arquivo JSP e chamando ele.
+		RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCadastrada.jsp");
+		request.setAttribute("empresa", empresaSave.getNome());
+		rd.forward(request, response);
 		
 		//Notificando no console o status do cadastro.
 		System.out.println("Uma nova empresa foi cadastrada no servidor.");
