@@ -1,7 +1,6 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,16 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class listaEmpresas
- */
+
 @WebServlet("/listaEmpresas")
 public class listaEmpresas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//Registrando itens do banco de dados na lista
@@ -30,6 +25,8 @@ public class listaEmpresas extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/listaDeEmpresasCadastradas.jsp");
 		request.setAttribute("empresas", lista);
 		rd.forward(request, response);
+		
+		
 //		BancoDeDados bdd = new BancoDeDados();
 //		
 //		PrintWriter escrevaResposta = response.getWriter();

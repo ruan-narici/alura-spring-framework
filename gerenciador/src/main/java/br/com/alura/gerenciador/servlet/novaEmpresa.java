@@ -1,10 +1,9 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,29 +12,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class novaEmpresa
- */
+
 @WebServlet("/novaEmpresa")
 public class novaEmpresa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		DateTimeFormatter format = new DateTimeFormatterBuilder().toFormatter().ofPattern("HH:mm:ss");
-		String time = LocalTime.now().format(format);
-		PrintWriter escrevaAResposta = response.getWriter();
-		String empresa = request.getParameter("nomeDaEmpresa");
 		
+		String empresa = request.getParameter("nomeDaEmpresa");
 		
 		BancoDeDados bdd = new BancoDeDados();
 		Empresa empresaSave = new Empresa();
 		
-		//Definindo o nome e o id da empresa.
+		//Definindo o nome e a data de cadastro da empresa.
 		empresaSave.setNome(empresa);
+		Date data;
+		try {
+			SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			data = formato.parse(request.getParameter("dataCadastro"));
+			empresaSave.setDataCadastro(data);
+		} catch (ParseException e) {
+			throw new ServletException(e);
+		}
 		
 		//Registrando no banco de dados.
 		bdd.addToList(empresaSave);
