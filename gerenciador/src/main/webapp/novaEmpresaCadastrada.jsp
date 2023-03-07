@@ -5,7 +5,7 @@
 <html>
 		<body>
 			<c:if test="${not empty empresa}">
-				<h1>A empresa ${empresa} foi cadastrada com sucesso!</h1>
+				<h1>A empresa ${empresa.getNome()} foi cadastrada com sucesso!</h1>
 			</c:if>
 			<c:if test="${empty empresa}">
 				<h1>Você deve efetuar um novo cadastro.</h1>
@@ -17,5 +17,4 @@
 					<input type="submit" value="Lista de empresas"/>
 			</form>
 		</body>
-		
 </html>
