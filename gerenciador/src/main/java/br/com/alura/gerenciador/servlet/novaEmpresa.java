@@ -61,8 +61,9 @@ public class novaEmpresa extends HttpServlet {
 		
 		//Enviando atributos para o arquivo JSP e chamando ele.
 //		RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCadastrada.jsp");
-		response.sendRedirect("novaEmpresaCadastrada.jsp");
 		request.setAttribute("empresa", empresaSave);
+		response.sendRedirect("novaEmpresaCadastrada.jsp");
+		
 //		rd.forward(request, response);
 		
 		//Notificando no console o status do cadastro.

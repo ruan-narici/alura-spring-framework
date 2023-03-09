@@ -2,6 +2,8 @@
 <%@page import="br.com.alura.gerenciador.servlet.BancoDeDados"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:url value="/removerEmpresa" var="removerEmpresa"/>
+<c:url value="/editarEmpresa" var="editarEmpresa"/>
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,10 @@
 		<c:if test="${not empty empresas}">
 			<ul>
 				<c:forEach items="${empresas}" var="empresa">
-					<li>${empresa.getNome()} - <fmt:formatDate value="${empresa.getDataCadastro()}" pattern="dd/MM/yyyy"/></li>
+					<li>${empresa.getNome()} - <fmt:formatDate value="${empresa.getDataCadastro()}" pattern="dd/MM/yyyy"/>
+					<a href="${editarEmpresa}?id=${empresa.getId()}">editar</a>
+					<a href="${removerEmpresa}?id=${empresa.getId()}">remover</a>
+					</li>
 				</c:forEach>
 			</ul>
 		</c:if>
