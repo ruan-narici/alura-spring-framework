@@ -1,17 +1,18 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
+import br.com.alura.gerenciador.modelo.BancoDeDados;
 
 
-@WebServlet("/removerEmpresa")
-public class removerEmpresa extends HttpServlet {
+//@WebServlet("/removerEmpresa")
+public class removerEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 

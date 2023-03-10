@@ -5,16 +5,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.alura.gerenciador.modelo.BancoDeDados;
+import br.com.alura.gerenciador.modelo.Empresa;
 
-@WebServlet("/novaEmpresa")
-public class novaEmpresa extends HttpServlet {
+
+//@WebServlet("/novaEmpresa")
+public class novaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
