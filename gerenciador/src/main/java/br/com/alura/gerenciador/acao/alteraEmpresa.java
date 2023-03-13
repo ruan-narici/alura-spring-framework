@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.modelo.BancoDeDados;
 
-public class alteraEmpresa {
+public class alteraEmpresa implements Acao{
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String nome = request.getParameter("nomeDaEmpresa");
 		Date data;
@@ -32,7 +32,7 @@ public class alteraEmpresa {
 		banco.buscaEmpresaId(id).setNome(nome);
 		banco.buscaEmpresaId(id).setDataCadastro(data);
 		
-		response.sendRedirect("entrada?acao=listaEmpresas");
+		return "redirect:entrada?acao=listaEmpresas";
 	}
 	
 }

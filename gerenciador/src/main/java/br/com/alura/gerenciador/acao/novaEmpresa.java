@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.BancoDeDados;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-public class novaEmpresa {
+public class novaEmpresa implements Acao {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		String empresa = request.getParameter("nomeDaEmpresa");
 		
@@ -34,9 +34,10 @@ public class novaEmpresa {
 		bdd.addToList(empresaSave);
 		
 		request.setAttribute("empresa", empresaSave);
-		response.sendRedirect("novaEmpresaCadastrada.jsp");
 		
 		System.out.println("Uma nova empresa foi cadastrada no servidor.");
+
+		return "forward:novaEmpresaCadastrada.jsp";
 	}
 
 }
