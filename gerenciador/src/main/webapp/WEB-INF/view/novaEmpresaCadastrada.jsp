@@ -4,6 +4,10 @@
 
 <html>
 		<body>
+			<c:import url="logout.jsp"></c:import>
+			<br>
+			<br>
+			<br>
 			<h1>A empresa ${empresa.getNome()} foi cadastrada com sucesso!</h1>
 			<form action="${htmlNovaEmpresa}" method="get">
 					<input type="submit" name="acao" value="novaEmpresaForm"/>

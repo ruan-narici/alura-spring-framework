@@ -9,6 +9,15 @@
 		<title>Cadastro de empresa</title>
 	</head>
 	<body>
+	
+	<c:import url="logout.jsp"></c:import>
+	<br>
+	<br>
+	<br>
+	Usuário logado: ${usuarioLogado.getLogin()}
+	<br>
+	<br>
+	<br>
 		<h1>Lista de empresas cadastradas:</h1>
 		<c:if test="${not empty empresas}">
 			<ul>

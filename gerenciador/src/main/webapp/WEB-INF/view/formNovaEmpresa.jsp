@@ -8,6 +8,10 @@
 		<title>Cadastro de empresa</title>
 	</head>
 	<body>
+	<c:import url="logout.jsp"></c:import>
+	<br>
+	<br>
+	<br>
 		<form action="${novaEmpresa}" method="post">
 			<label for="nomeEmpresa">Nome da empresa: </label>
 			<input type="text" name="nomeDaEmpresa" id="nomeEmpresa"/>
